@@ -60,6 +60,7 @@ function renderCountryInfo(countries) {
     })
     .join('')
   return markup
+  
 }
 
 
