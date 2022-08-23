@@ -33,13 +33,20 @@ function onCountryInput() {
       else if (countries.length === 0) {
         Notiflix.Notify.info('please enter same name');
      }
-      else if (countries.length >= 10) {
+      else if (countries.length > 10) {
          Notiflix.Notify.failure("Too many matches found. Please enter a more specific name.")
       } else {
         countryList.insertAdjacentHTML('beforeend', renderCountryList(countries))
       }
     })
-    .catch(Notiflix.Notify.failure('Oops, there is no country with that name'))
+    .catch(
+      error =>{
+        if ( error.status = 404){
+          Notiflix.Notify.failure('Oops, there is no country with that name')
+        }
+       error.massage
+      }
+     )
 }
 
 
